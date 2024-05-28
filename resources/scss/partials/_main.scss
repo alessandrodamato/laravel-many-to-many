@@ -1,0 +1,12 @@
+main{
+  .crud-table{
+    input, select{
+      border: none;
+      outline: none;
+    }
+    .select-empty{
+      color: #757575;
+    }
+  }
+}
+
