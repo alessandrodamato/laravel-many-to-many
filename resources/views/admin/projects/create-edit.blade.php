@@ -113,7 +113,18 @@
                 <label for="technologies" class="form-label">Tecnologie</label>
                 <div class="btn-group btn-group-sm" role="group">
                   @foreach ($technologies as $technology)
-                  <input name="technologies[]" value="{{$technology->id}}" type="checkbox" class="btn-check" id="technology-{{$technology->id}}" autocomplete="off">
+                  <input
+                    name="technologies[]"
+                    value="{{$technology->id}}"
+                    type="checkbox"
+                    class="btn-check"
+                    id="technology-{{$technology->id}}"
+                    autocomplete="off"
+                    @if ($errors->any() && in_array($technology->id, old('technologies', []))
+                    || !$errors->any() && $project->technologies->contains($technology))
+                      checked
+                    @endif
+                  >
                   <label class="btn btn-outline-secondary" for="technology-{{$technology->id}}">{{$technology->name}}</label>
                   @endforeach
                 </div>
