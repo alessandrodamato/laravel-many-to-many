@@ -67,51 +67,38 @@
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi descrizione" name="description" value="{{old('description')}}"></td>
             <td class="text-center">
               <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i></button>
-              <a href="{{route('admin.projects.create')}}" class="btn btn-secondary"><i class="fa-solid fa-file-circle-plus"></i></a>
+              <a href="{{route('admin.projects.create')}}" class="btn btn-primary"><i class="fa-solid fa-file-circle-plus"></i></a>
               <button onclick="formReset()" type="reset" class="btn btn-danger"><i class="fa-solid fa-rotate-right"></i></button>
             </td>
           </form>
         </tr>
         @forelse ($projects as $item)
         <tr>
-          <form id="form-edit-{{$item->id}}" action="{{route('admin.projects.update', $item)}}" method="POST">
-            @csrf
-            @method('PUT')
-            <td>{{$item->id}}</td>
-            <td><input class="w-100" type="text" value="{{$item->name}}" name="name"></td>
-            <td><input class="w-100" type="text" value="{{$item->creator}}" name="creator"></td>
-            <td><input class="w-100" type="text" value="{{$item->objective}}" name="objective"></td>
-            <td>
-              <select style="-webkit-appearance: none; -moz-appearance: none;" name="type_id">
-                <option value="">---</option>
-                @foreach ($types as $type)
-                  <option value="{{$type->id}}" @if($type->id == $item->type?->id) selected @endif>{{$type->name}}</option>
-                @endforeach
-              </select>
-            </td>
-            <td><input class="w-100" type="text" placeholder="Aggiungi descrizione" name="description" value="{{$item->description}}"></td>
-          </form>
-          <td class="text-center">
-            <a href="{{route('admin.projects.show', $item)}}" class="btn btn-dark"><i class="fa-solid fa-eye"></i></a>
-            <button type="submit" onclick="editSubmit({{$item->id}})" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></button>
-            <a href="{{route('admin.projects.edit', $item)}}" class="btn btn-primary"><i class="fa-solid fa-file-pen"></i></a>
+          <td>{{$item->id}}</td>
+          <td>{{$item->name}}</td>
+          <td>{{$item->creator}}</td>
+          <td>{{$item->objective}}</td>
+          <td>{{$item->type?->name ? $item->type->name : '---'}}</td>
+          <td class="w-25">{{$item->description}}</td>
+          <td class="text-center w-25">
+            <a href="{{route('admin.projects.show', $item)}}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+            <a href="{{route('admin.projects.edit', $item)}}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
             <form onsubmit="return confirm('Sei sicuro di voler eliminare {{$item->name}} ?')" action="{{route('admin.projects.destroy', $item)}}" method="POST" class="d-inline-block">
               @csrf
               @method('DELETE')
-                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+              <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
             </form>
           </td>
         </tr>
         @empty
         <tr>
-          <td colspan="5" class="text-center"><h6 class="my-2">Tabella vuota</h6></td>
+          <td colspan="7" class="text-center"><h6 class="my-2">Tabella vuota</h6></td>
         </tr>
         @endforelse
       </tbody>
     </table>
   </div>
 
-  @include('admin.partials.edit-submit')
   @include('admin.partials.form-reset')
 
 @endsection

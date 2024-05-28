@@ -87,8 +87,7 @@
                   name="type_id">
                   <option value="">---</option>
                   @foreach ($types as $type)
-                  <option value="{{$type->id}}" @if($type->id == $project?->type->id) selected @endif>{{$type->name}}
-                  </option>
+                    <option value="{{$type->id}}" @if($type->id == $project->type?->id) selected @endif>{{$type->name}}</option>
                   @endforeach
                 </select>
                 @error('type')
@@ -121,7 +120,7 @@
                     id="technology-{{$technology->id}}"
                     autocomplete="off"
                     @if ($errors->any() && in_array($technology->id, old('technologies', []))
-                    || !$errors->any() && $project->technologies->contains($technology))
+                    || !$errors->any() && $project?->technologies->contains($technology))
                       checked
                     @endif
                   >
