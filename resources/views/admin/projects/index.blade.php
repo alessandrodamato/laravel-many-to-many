@@ -89,7 +89,7 @@
                 @endforeach
               </select>
             </td>
-            <td><input class="w-100 add-project" type="text" placeholder="Aggiungi descrizione" name="description" value="{{$item->description}}"></td>
+            <td><input class="w-100" type="text" placeholder="Aggiungi descrizione" name="description" value="{{$item->description}}"></td>
           </form>
           <td class="text-center">
             <a href="{{route('admin.projects.show', $item)}}" class="btn btn-dark"><i class="fa-solid fa-eye"></i></a>
