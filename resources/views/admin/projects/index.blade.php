@@ -76,7 +76,7 @@
             </a>
           </th>
           <th scope="col">Type</th>
-          <th scope="col">Description</th>
+          <th class="w-15" scope="col">Description</th>
           <th scope="col" class="text-center">Actions</th>
         </tr>
       </thead>

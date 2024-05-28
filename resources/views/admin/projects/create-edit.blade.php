@@ -87,7 +87,7 @@
                   name="type_id">
                   <option value="">---</option>
                   @foreach ($types as $type)
-                    <option value="{{$type->id}}" @if($type->id == $project->type?->id) selected @endif>{{$type->name}}</option>
+                    <option value="{{$type->id}}" @if($type->id == $project?->type?->id) selected @endif>{{$type->name}}</option>
                   @endforeach
                 </select>
                 @error('type')
