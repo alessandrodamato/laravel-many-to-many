@@ -7,6 +7,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Functions\Helpers;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,11 +47,12 @@ class ProjectController extends Controller
     {
       $project = null;
       $types = Type::all();
+      $technologies = Technology::all();
       $action = 'Aggiungi un progetto';
       $method = 'POST';
       $btn = 'Aggiungi';
       $route = route('admin.projects.store');
-      return view('admin.projects.create-edit', compact('project','types', 'action', 'method', 'route', 'btn'));
+      return view('admin.projects.create-edit', compact('project', 'types', 'technologies', 'action', 'method', 'route', 'btn'));
     }
 
     /**
@@ -81,6 +83,10 @@ class ProjectController extends Controller
       $new_item->description = $form_data['description'];
 
       $new_item->save();
+
+      if(array_key_exists('technologies', $form_data)){
+        $new_item->technologies()->attach($form_data['technologies']);
+      }
 
       return redirect()->route('admin.projects.index')->with('success', 'Progetto inserito correttamente');
 
