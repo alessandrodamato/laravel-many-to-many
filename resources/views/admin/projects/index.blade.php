@@ -48,7 +48,7 @@
               @endif
             </a>
           </th>
-          <th scope="col">
+          <th class="w-15" scope="col">
             <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'name', 'dir' => $dir])}}">Name
               @if ($dir === 'desc' && $col === 'name')
                 <i class="fa-solid fa-sort-down"></i>
@@ -57,7 +57,7 @@
               @endif
             </a>
           </th>
-          <th scope="col">
+          <th class="w-15" scope="col">
             <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'creator', 'dir' => $dir])}}">Creator
               @if ($dir === 'desc' && $col === 'creator')
                 <i class="fa-solid fa-sort-down"></i>
@@ -84,7 +84,7 @@
         <tr>
           <form class="d-inline-block" action="{{route('admin.projects.store')}}" method="POST">
             @csrf
-            <td class="w-5"><strong>#</strong></td>
+            <td><strong>#</strong></td>
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi nome" name="name" value="{{old('name')}}"></td>
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi creatore" name="creator" value="{{old('creator')}}"></td>
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi obiettivo" name="objective" value="{{old('objective')}}"></td>
@@ -106,12 +106,12 @@
         </tr>
         @forelse ($projects as $item)
         <tr>
-          <td class="w-5">{{$item->id}}</td>
+          <td>{{$item->id}}</td>
           <td>{{$item->name}}</td>
           <td>{{$item->creator}}</td>
           <td>{{$item->objective}}</td>
           <td>{{$item->type?->name ? $item->type->name : '---'}}</td>
-          <td class="w-25">{{$item->description}}</td>
+          <td>{{$item->description}}</td>
           <td class="text-center w-25">
             <a href="{{route('admin.projects.show', $item)}}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
             <a href="{{route('admin.projects.edit', $item)}}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
