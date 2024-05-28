@@ -23,8 +23,9 @@ class ProjectController extends Controller
       $types = Type::all();
 
       $dir = 'desc';
+      $col = null;
 
-      return view('admin.projects.index', compact('projects', 'types', 'dir'));
+      return view('admin.projects.index', compact('projects', 'types', 'dir', 'col'));
 
     }
 
@@ -36,7 +37,7 @@ class ProjectController extends Controller
 
       $types = Type::all();
 
-      return view('admin.projects.index', compact('projects', 'types', 'dir'));
+      return view('admin.projects.index', compact('projects', 'types', 'dir', 'col'));
 
     }
 

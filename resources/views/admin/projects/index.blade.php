@@ -39,10 +39,42 @@
     <table class="table crud-table">
       <thead>
         <tr>
-          <th scope="col"><a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'id', 'dir' => $dir])}}">ID</a></th>
-          <th scope="col"><a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'name', 'dir' => $dir])}}">Name</a></th>
-          <th scope="col"><a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'creator', 'dir' => $dir])}}">Creator</a></th>
-          <th scope="col"><a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'objective', 'dir' => $dir])}}">Objective</a></th>
+          <th class="w-5" scope="col">
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'id', 'dir' => $dir])}}">ID
+              @if ($dir === 'desc' && $col === 'id')
+                <i class="fa-solid fa-sort-down"></i>
+              @elseif ($dir === 'asc' && $col === 'id')
+                <i class="fa-solid fa-sort-up"></i>
+              @endif
+            </a>
+          </th>
+          <th scope="col">
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'name', 'dir' => $dir])}}">Name
+              @if ($dir === 'desc' && $col === 'name')
+                <i class="fa-solid fa-sort-down"></i>
+              @elseif ($dir === 'asc' && $col === 'name')
+                <i class="fa-solid fa-sort-up"></i>
+              @endif
+            </a>
+          </th>
+          <th scope="col">
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'creator', 'dir' => $dir])}}">Creator
+              @if ($dir === 'desc' && $col === 'creator')
+                <i class="fa-solid fa-sort-down"></i>
+              @elseif ($dir === 'asc' && $col === 'creator')
+                <i class="fa-solid fa-sort-up"></i>
+              @endif
+            </a>
+          </th>
+          <th scope="col">
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'objective', 'dir' => $dir])}}">Objective
+              @if ($dir === 'desc' && $col === 'objective')
+                <i class="fa-solid fa-sort-down"></i>
+              @elseif ($dir === 'asc' && $col === 'objective')
+                <i class="fa-solid fa-sort-up"></i>
+              @endif
+            </a>
+          </th>
           <th scope="col">Type</th>
           <th scope="col">Description</th>
           <th scope="col" class="text-center">Actions</th>
@@ -52,13 +84,13 @@
         <tr>
           <form class="d-inline-block" action="{{route('admin.projects.store')}}" method="POST">
             @csrf
-            <td><strong>#</strong></td>
+            <td class="w-5"><strong>#</strong></td>
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi nome" name="name" value="{{old('name')}}"></td>
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi creatore" name="creator" value="{{old('creator')}}"></td>
             <td><input class="w-100 add-project" type="text" placeholder="Aggiungi obiettivo" name="objective" value="{{old('objective')}}"></td>
             <td>
-              <select style="-webkit-appearance: none; -moz-appearance: none;" class="select-empty" onchange="this.value === 'empty' ? this.className = 'select-empty' : this.className = 'text-black'" name="type_id">
-                <option class="text-black" value="empty">Seleziona tipo</option>
+              <select style="-webkit-appearance: none; -moz-appearance: none;" class="select-empty" onchange="this.value === '' ? this.className = 'select-empty' : this.className = 'text-black'" name="type_id">
+                <option class="text-black" value="">Seleziona tipo</option>
                 @foreach ($types as $type)
                   <option class="text-black" value="{{$type->id}}" @if($type->id == old('type_id')) selected @endif>{{$type->name}}</option>
                 @endforeach
@@ -74,7 +106,7 @@
         </tr>
         @forelse ($projects as $item)
         <tr>
-          <td>{{$item->id}}</td>
+          <td class="w-5">{{$item->id}}</td>
           <td>{{$item->name}}</td>
           <td>{{$item->creator}}</td>
           <td>{{$item->objective}}</td>
