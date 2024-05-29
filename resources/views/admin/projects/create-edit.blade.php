@@ -100,9 +100,12 @@
               <div class="mb-3">
                 <label for="file" class="form-label">File .pdf</label>
                 <input type="hidden" name="isUploaded" value="true" id="isUploaded">
-                <input name="file" type="file" class="form-control @error('file') is-invalid @enderror" id="file"
-                  placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}" onchange="addFile()">
-                <button class="btn btn-sm btn-outline-danger" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
+                <div class="d-flex">
+                  <div id="uploaded-file" class="{{old('file', $project?->file) ? 'd-block' : 'd-none'}}">{{$project?->file_original_name}}</div>
+                  <input name="file" type="file" class="form-control {{old('file', $project?->file) ? 'd-none' : 'd-inline-block'}} @error('file') is-invalid @enderror" id="file"
+                    placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}" onchange="addFile()">
+                  <button class="btn btn-sm btn-outline-danger {{old('file', $project?->file) ? 'd-inline-block' : 'd-none'}}" id="file-remover" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
+                </div>
                 @error('file')
                 <div class="text-danger my-1" style="font-size: .8rem">{{$message}}</div>
                 @enderror
@@ -163,13 +166,21 @@
 
 <script>
   isUploaded = document.getElementById('isUploaded');
+  uploadedFile = document.getElementById('uploaded-file');
+  fileRemover = document.getElementById('file-remover');
   file = document.getElementById('file');
   function resetFile(){
     isUploaded.value = false;
     file.value = '';
+    uploadedFile.classList.add('d-none');
+    fileRemover.classList.add('d-none');
+    file.classList.remove('d-none');
+    file.classList.add('d-inline-block');
   }
   function addFile(){
     isUploaded.value = true;
+    fileRemover.classList.remove('d-none');
+    fileRemover.classList.add('d-inline-block');
   }
 </script>
 
