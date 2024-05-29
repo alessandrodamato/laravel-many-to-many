@@ -3,14 +3,14 @@
 
 
 @section('title')
- - Technologies
+ - Tecnologie
 @endsection
 
 
 
 @section('content')
 
-  <h1 class="text-center mb-5">Technologies</h1>
+  <h1 class="text-center mb-5">Tecnologie</h1>
 
   <div class="container">
 
@@ -37,8 +37,8 @@
         <table class="table w-50 crud-table">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th class="text-center" scope="col">Actions</th>
+              <th scope="col">Nome</th>
+              <th class="text-center" scope="col">Azioni</th>
             </tr>
           </thead>
           <tbody>

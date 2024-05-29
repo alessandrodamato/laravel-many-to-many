@@ -113,7 +113,7 @@
           <td>{{$item->type?->name ? $item->type->name : '---'}}</td>
           <td>{{$item->description}}</td>
           <td class="text-center w-25">
-            <a href="{{route('admin.projects.show', $item)}}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+            <a href="{{route('admin.projects.show', $item)}}" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a>
             <a href="{{route('admin.projects.edit', $item)}}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
             <form onsubmit="return confirm('Sei sicuro di voler eliminare {{$item->name}} ?')" action="{{route('admin.projects.destroy', $item)}}" method="POST" class="d-inline-block">
               @csrf
