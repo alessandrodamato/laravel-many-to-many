@@ -101,7 +101,7 @@
                 <label for="file" class="form-label">File .pdf</label>
                 <input type="hidden" name="isUploaded" value="true" id="isUploaded">
                 <div class="d-flex">
-                  <div id="uploaded-file" class="d-flex align-items-center rounded-2 px-2 {{old('file', $project?->file) ? 'd-block' : 'd-none'}}"><span>{{$project?->file_original_name}}</span></div>
+                  <div id="uploaded-file" class="w-100 overflow-auto d-flex align-items-center rounded-2 px-2 {{old('file', $project?->file) ? 'd-block' : 'd-none'}}"><span>{{$project?->file_original_name}}</span></div>
                   <input name="file" type="file" class="form-control {{old('file', $project?->file) ? 'd-none' : 'd-inline-block'}} @error('file') is-invalid @enderror" id="file"
                     placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}" onchange="addFile()">
                 </div>
@@ -113,7 +113,7 @@
 
             <div class="col-3">
               <div class="mb-3">
-                <button class="btn btn-sm btn-outline-danger {{old('file', $project?->file) ? 'd-inline-block' : 'd-none'}}" id="file-remover" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
+                <button class="btn btn btn-outline-danger {{old('file', $project?->file) ? 'd-inline-block' : 'd-none'}}" id="file-remover" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
               </div>
             </div>
 
