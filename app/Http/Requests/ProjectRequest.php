@@ -35,16 +35,16 @@ class ProjectRequest extends FormRequest
         'name.required' => 'Inserire il nome',
         'name.min' => 'Il nome deve avere almeno :min caratteri',
         'name.max' => 'Il nome deve avere massimo :max caratteri',
-        'creator.required' => 'Inserire il nome del creatore',
-        'creator.min' => 'Il campo creator deve avere almeno :min caratteri',
-        'creator.max' => 'Il campo creator deve avere massimo :max caratteri',
+        'creator.required' => 'Inserire il creatore',
+        'creator.min' => 'Il campo creatore deve avere almeno :min caratteri',
+        'creator.max' => 'Il campo creatore deve avere massimo :max caratteri',
         'objective.required' => 'Inserire l\'obiettivo',
-        'objective.min' => 'Il campo objective deve avere almeno :min caratteri',
-        'objective.max' => 'Il campo objective deve avere massimo :max caratteri',
+        'objective.min' => 'Il campo obiettivo deve avere almeno :min caratteri',
+        'objective.max' => 'Il campo obiettivo deve avere massimo :max caratteri',
         'file.mimes' => 'Il file caricato non è in formato .pdf',
         'file.max' => 'Il file caricato è troppo grande (max. 20mb)',
-        'description.required' => 'Descrizione obbligatioria',
-        'description.min' => 'Descrizione troppo breve (inferiore a :min caratteri)'
+        'description.required' => 'La descrizione è obbligatoria',
+        'description.min' => 'La descrizione è troppo breve (inferiore a :min caratteri)'
       ];
     }
 

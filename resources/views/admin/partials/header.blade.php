@@ -26,7 +26,7 @@
             </button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{route('admin.profile')}}">Profilo</a></li>
-              <li><a class="dropdown-item" href="#">Dashboard</a></li>
+              <li><a class="dropdown-item" href="{{route('admin.dashboard')}}">Dashboard</a></li>
               <li><button class="dropdown-item" type="submit">Logout</button></li>
             </ul>
           </div>

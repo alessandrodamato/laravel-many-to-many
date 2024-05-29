@@ -87,7 +87,7 @@
                   name="type_id">
                   <option value="">---</option>
                   @foreach ($types as $type)
-                    <option value="{{$type->id}}" @if($type->id == $project?->type?->id) selected @endif>{{$type->name}}</option>
+                    <option value="{{$type->id}}" @if($type->id == old('type_id', $project?->type?->id)) selected @endif>{{$type->name}}</option>
                   @endforeach
                 </select>
                 @error('type')
@@ -98,7 +98,7 @@
 
             <div class="col-6">
               <div class="mb-3">
-                <label for="file" class="form-label">Scegli file in formato .pdf</label>
+                <label for="file" class="form-label">File .pdf</label>
                 <input name="file" type="file" class="form-control @error('file') is-invalid @enderror" id="file"
                   placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}">
                 @error('file')

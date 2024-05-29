@@ -3,14 +3,14 @@
 
 
 @section('title')
- - Projects
+ - Progetti
 @endsection
 
 
 
 @section('content')
 
-  <h1 class="text-center mb-5">Projects</h1>
+  <h1 class="text-center mb-5">Progetti</h1>
 
   <div class="container">
 
@@ -49,7 +49,7 @@
             </a>
           </th>
           <th class="w-15" scope="col">
-            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'name', 'dir' => $dir])}}">Name
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'name', 'dir' => $dir])}}">Nome
               @if ($dir === 'desc' && $col === 'name')
                 <i class="fa-solid fa-sort-down"></i>
               @elseif ($dir === 'asc' && $col === 'name')
@@ -58,7 +58,7 @@
             </a>
           </th>
           <th class="w-15" scope="col">
-            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'creator', 'dir' => $dir])}}">Creator
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'creator', 'dir' => $dir])}}">Creatore
               @if ($dir === 'desc' && $col === 'creator')
                 <i class="fa-solid fa-sort-down"></i>
               @elseif ($dir === 'asc' && $col === 'creator')
@@ -67,7 +67,7 @@
             </a>
           </th>
           <th scope="col">
-            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'objective', 'dir' => $dir])}}">Objective
+            <a class="text-black text-decoration-none" href="{{route('admin.order-by', ['col' => 'objective', 'dir' => $dir])}}">Obiettivo
               @if ($dir === 'desc' && $col === 'objective')
                 <i class="fa-solid fa-sort-down"></i>
               @elseif ($dir === 'asc' && $col === 'objective')
@@ -75,9 +75,9 @@
               @endif
             </a>
           </th>
-          <th scope="col">Type</th>
-          <th class="w-15" scope="col">Description</th>
-          <th scope="col" class="text-center">Actions</th>
+          <th scope="col">Tipo</th>
+          <th class="w-15" scope="col">Descrizione</th>
+          <th scope="col" class="text-center">Azioni</th>
         </tr>
       </thead>
       <tbody>
