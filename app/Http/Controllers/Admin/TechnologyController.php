@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Technology;
+use App\Models\Project;
 use App\Functions\Helpers;
 
 class TechnologyController extends Controller
@@ -17,6 +18,14 @@ class TechnologyController extends Controller
       $data = Technology::all();
 
       return view('admin.technologies.index', compact('data'));
+    }
+
+    public function technologiesProjects()
+    {
+      $technologies = Technology::all();
+      $projects = Project::all();
+
+      return view('admin.technologies.technologies-projects', compact('technologies', 'projects'));
     }
 
     /**
@@ -67,7 +76,7 @@ class TechnologyController extends Controller
      */
     public function show(string $id)
     {
-        //
+      //
     }
 
     /**

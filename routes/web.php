@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])
 
         // Rotte CRUD Custom
         Route::get('/types-projects/', [TypeController::class, 'typesProjects'])->name('types-projects');
+        Route::get('/technologies-projects/', [TechnologyController::class, 'technologiesProjects'])->name('technologies-projects');
         Route::get('/order-by/{col}/{dir}', [ProjectController::class, 'orderBy'])->name('order-by');
     });
 

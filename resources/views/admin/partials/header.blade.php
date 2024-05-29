@@ -15,6 +15,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="{{route('admin.projects.index')}}">Progetti</a></li>
+              <li><a class="dropdown-item" href="{{route('admin.technologies-projects')}}">Progetti suddivisi per tecnologia</a></li>
               <li><a class="dropdown-item" href="{{route('admin.types-projects')}}">Progetti suddivisi per tipo</a></li>
               <li><a class="dropdown-item" href="{{route('admin.technologies.index')}}">Tecnologie</a></li>
               <li><a class="dropdown-item" href="{{route('admin.types.index')}}">Tipi</a></li>
