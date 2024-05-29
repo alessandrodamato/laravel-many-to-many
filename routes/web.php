@@ -32,10 +32,10 @@ Route::middleware(['auth', 'verified'])
         // Rotte CRUD
         Route::resource('/projects', ProjectController::class);
         Route::resource('/technologies', TechnologyController::class)->except('create', 'edit', 'show');
-        Route::resource('/types', TypeController::class)->except('create', 'edit', 'show');
+        Route::resource('/types', TypeController::class)->except('create', 'edit');
 
         // Rotte CRUD Custom
-        Route::get('/types-projects', [TypeController::class, 'typesProjects'])->name('types-projects');
+        Route::get('/types-projects/', [TypeController::class, 'typesProjects'])->name('types-projects');
         Route::get('/order-by/{col}/{dir}', [ProjectController::class, 'orderBy'])->name('order-by');
     });
 

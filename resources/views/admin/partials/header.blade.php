@@ -1,12 +1,12 @@
 <header>
-  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <nav class="navbar py-3 navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('home')}}">Vai al sito</a>
+            <a class="nav-link me-3" href="{{route('home')}}">Vai al sito pubblico</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item me-3">
             <a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard</a>
           </li>
           <li class="nav-item dropdown">

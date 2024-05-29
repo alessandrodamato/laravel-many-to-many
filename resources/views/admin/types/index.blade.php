@@ -52,6 +52,7 @@
                 </form>
               </td>
               <td class="text-center">
+                <a href="{{route('admin.types.show', $item)}}" class="btn btn-secondary"><i class="fa-solid fa-eye"></i></a>
                 <button type="submit" onclick="editSubmit({{$item->id}})" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></button>
                 <form onsubmit="return confirm('Sei sicuro di voler eliminare {{$item->name}} ?')" action="{{route('admin.types.destroy', $item)}}" method="POST" class="d-inline-block">
                   @csrf

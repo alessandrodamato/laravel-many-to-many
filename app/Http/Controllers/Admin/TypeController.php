@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Type;
 use App\Functions\Helpers;
 use App\Models\Project;
+use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class TypeController extends Controller
 {
@@ -73,9 +74,10 @@ class TypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Type $type)
     {
-      //
+      $projects = Project::where('type_id', $type->id)->get();
+      return view('admin.types.show', compact('type', 'projects'));
     }
 
     /**
