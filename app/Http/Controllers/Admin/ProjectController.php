@@ -67,11 +67,14 @@ class ProjectController extends Controller
       if(array_key_exists('file', $form_data)){
 
         $file = Storage::put('uploads', $form_data['file']);
+        $original_name = $request->file('file')->getClientOriginalName();
 
         $form_data['file'] = $file;
+        $form_data['original_name'] = $original_name;
 
       } else {
         $form_data['file'] = null;
+        $form_data['original_name'] = null;
       }
 
       $new_item = new Project();
@@ -81,6 +84,7 @@ class ProjectController extends Controller
       $new_item->creator = $form_data['creator'];
       $new_item->objective = $form_data['objective'];
       $new_item->file = $form_data['file'];
+      $new_item->file_original_name = $form_data['original_name'];
       $new_item->description = $form_data['description'];
 
       $new_item->save();
@@ -123,14 +127,24 @@ class ProjectController extends Controller
 
       $form_data = $request->all();
 
-      if(array_key_exists('file', $form_data)){
+      if(array_key_exists('file', $form_data) && $form_data['isUploaded'] == 'true'){
 
         $file = Storage::put('uploads', $form_data['file']);
+        $original_name = $request->file('file')->getClientOriginalName();
 
         $form_data['file'] = $file;
+        $form_data['original_name'] = $original_name;
+
+      } elseif (!array_key_exists('file', $form_data) && $form_data['isUploaded'] == 'true') {
+
+        $form_data['file'] = $project->file;
+        $form_data['original_name'] = $project->file_original_name;
 
       } else {
+
         $form_data['file'] = null;
+        $form_data['original_name'] = null;
+
       }
 
       $project->name = $form_data['name'];
@@ -139,6 +153,7 @@ class ProjectController extends Controller
       $project->creator = $form_data['creator'];
       $project->objective = $form_data['objective'];
       $project->file = $form_data['file'];
+      $project->file_original_name = $form_data['original_name'];
       $project->description = $form_data['description'];
 
       $project->update();

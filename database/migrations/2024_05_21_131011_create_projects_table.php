@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('creator', 100);
             $table->string('objective', 50);
             $table->string('file')->nullable();
+            $table->string('file_original_name')->nullable();
             $table->text('description');
             $table->timestamps();
         });

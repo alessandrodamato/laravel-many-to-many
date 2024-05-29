@@ -99,8 +99,10 @@
             <div class="col-6">
               <div class="mb-3">
                 <label for="file" class="form-label">File .pdf</label>
+                <input type="hidden" name="isUploaded" value="true" id="isUploaded">
                 <input name="file" type="file" class="form-control @error('file') is-invalid @enderror" id="file"
-                  placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}">
+                  placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}" onchange="addFile()">
+                <button class="btn btn-sm btn-outline-danger" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
                 @error('file')
                 <div class="text-danger my-1" style="font-size: .8rem">{{$message}}</div>
                 @enderror
@@ -158,5 +160,17 @@
   </div>
 
 </div>
+
+<script>
+  isUploaded = document.getElementById('isUploaded');
+  file = document.getElementById('file');
+  function resetFile(){
+    isUploaded.value = false;
+    file.value = '';
+  }
+  function addFile(){
+    isUploaded.value = true;
+  }
+</script>
 
 @endsection
