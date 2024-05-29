@@ -80,7 +80,7 @@
               </div>
             </div>
 
-            <div class="col-6">
+            <div class="col-3">
               <div class="mb-3">
                 <label for="type" class="form-label">Tipo</label>
                 <select class="form-select" id="type" style="-webkit-appearance: none; -moz-appearance: none;"
@@ -101,14 +101,19 @@
                 <label for="file" class="form-label">File .pdf</label>
                 <input type="hidden" name="isUploaded" value="true" id="isUploaded">
                 <div class="d-flex">
-                  <div id="uploaded-file" class="{{old('file', $project?->file) ? 'd-block' : 'd-none'}}">{{$project?->file_original_name}}</div>
+                  <div id="uploaded-file" class="d-flex align-items-center rounded-2 px-2 {{old('file', $project?->file) ? 'd-block' : 'd-none'}}"><span>{{$project?->file_original_name}}</span></div>
                   <input name="file" type="file" class="form-control {{old('file', $project?->file) ? 'd-none' : 'd-inline-block'}} @error('file') is-invalid @enderror" id="file"
                     placeholder="Carica un file .pdf" value="{{old('file', $project?->file)}}" onchange="addFile()">
-                  <button class="btn btn-sm btn-outline-danger {{old('file', $project?->file) ? 'd-inline-block' : 'd-none'}}" id="file-remover" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
                 </div>
                 @error('file')
                 <div class="text-danger my-1" style="font-size: .8rem">{{$message}}</div>
                 @enderror
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="mb-3">
+                <button class="btn btn-sm btn-outline-danger {{old('file', $project?->file) ? 'd-inline-block' : 'd-none'}}" id="file-remover" onclick="event.preventDefault(); resetFile()">Rimuovi file</button>
               </div>
             </div>
 
@@ -124,8 +129,7 @@
                     class="btn-check"
                     id="technology-{{$technology->id}}"
                     autocomplete="off"
-                    @if ($errors->any() && in_array($technology->id, old('technologies', []))
-                    || !$errors->any() && $project?->technologies->contains($technology))
+                    @if ($errors->any() && in_array($technology->id, old('technologies', [])) || !$errors->any() && $project?->technologies->contains($technology))
                       checked
                     @endif
                   >
@@ -165,10 +169,12 @@
 </div>
 
 <script>
+
   isUploaded = document.getElementById('isUploaded');
   uploadedFile = document.getElementById('uploaded-file');
   fileRemover = document.getElementById('file-remover');
   file = document.getElementById('file');
+
   function resetFile(){
     isUploaded.value = false;
     file.value = '';
@@ -177,11 +183,13 @@
     file.classList.remove('d-none');
     file.classList.add('d-inline-block');
   }
+
   function addFile(){
     isUploaded.value = true;
     fileRemover.classList.remove('d-none');
     fileRemover.classList.add('d-inline-block');
   }
+
 </script>
 
 @endsection
