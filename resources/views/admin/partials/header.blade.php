@@ -25,8 +25,8 @@
               <i class="fa-solid fa-user"></i><span class="ms-2">{{Auth::user()->name}}</span>
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Profilo</a></li>
-              <li><a class="dropdown-item" href="#">Privacy e sicurezza</a></li>
+              <li><a class="dropdown-item" href="{{route('admin.profile')}}">Profilo</a></li>
+              <li><a class="dropdown-item" href="#">Dashboard</a></li>
               <li><button class="dropdown-item" type="submit">Logout</button></li>
             </ul>
           </div>

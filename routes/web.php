@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Guest\PageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
@@ -26,6 +26,7 @@ Route::middleware(['auth', 'verified'])
       ->prefix('admin')
       ->group(function(){
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::resource('/projects', ProjectController::class);
         Route::resource('/technologies', TechnologyController::class)->except('create', 'edit', 'show');
         Route::resource('/types', TypeController::class)->except('create', 'edit', 'show');
